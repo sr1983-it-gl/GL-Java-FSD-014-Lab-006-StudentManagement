@@ -26,11 +26,15 @@
 		<h3>Students Directory</h3>
 		<hr>
 
+        <c:url var="addUrl" value = "/student/add-begin" />
 
 		<!-- Add a button -->
-		<a href="/StudentManagement/student/add-begin"
+		<a href="${addUrl}"
 			class="btn btn-primary btn-sm mb-3"> Add Student </a> 
-		<a href="/StudentManagement/logout" 
+        
+        <c:url var="logoutUrl" value = "/logout" />
+        
+		<a href="${logoutUrl}" 
 				class="btn btn-primary btn-sm mb-3 mx-auto"> Logout </a> 
 
 		<table class="table table-bordered table-striped">
@@ -53,14 +57,20 @@
 						<td><c:out value="${tempStudent.country}" /></td>
 						<td>
 							<!-- Add "update" button/link --> 
+                            
+                            <c:url var="updateUrl" value="/student/update-begin?studentId=${tempStudent.id}" />
+                            
                             <a
-							href="/StudentManagement/student/update-begin?studentId=${tempStudent.id}"
+							href="${updateUrl}"
 							class="btn btn-info btn-sm"> Update 
                             </a> 
                             
                             
                             <!-- Add "delete" button/link -->
-							<a href="/StudentManagement/student/delete?studentId=${tempStudent.id}"
+                            
+                            <c:url var="deleteUrl" value="/student/delete?studentId=${tempStudent.id}" />
+                            
+							<a href="${deleteUrl}"
 							class="btn btn-danger btn-sm"
 							onclick="if (!(confirm('Are you sure you want to delete this Student?'))) return false">
 								Delete 

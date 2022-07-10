@@ -37,7 +37,6 @@ public class StudentController {
 
 		Student student = studentService.findById(studentId);
 
-		// set Book as a model attribute to pre-populate the form
 		model.addAttribute(StudentAppConstants.MODEL_STUDENT, student);
 
 		// send over to our form
@@ -45,7 +44,7 @@ public class StudentController {
 	}
 
 	@PostMapping("/save")
-	public String saveBook(
+	public String saveStudent(
 		@RequestParam("studentId") int studentId, 
 		@RequestParam("firstName") String firstName,
 		@RequestParam("lastName") String lastName, 
@@ -64,7 +63,7 @@ public class StudentController {
 			student.setCountry(country);
 		} else
 			student = new Student(firstName, lastName, course, country);
-		// save the Book
+
 		studentService.save(student);
 
 		// use a redirect to prevent duplicate submissions
@@ -76,10 +75,8 @@ public class StudentController {
 	public String delete(
 		@RequestParam("studentId") int studentId) {
 
-		// delete the Book
 		studentService.deleteById(studentId);
 
-		// redirect to /Books/list
 		return "redirect:/students/list";
 
 	}

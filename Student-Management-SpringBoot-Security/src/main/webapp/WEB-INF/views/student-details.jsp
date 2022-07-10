@@ -28,7 +28,9 @@
 
 		<p class="h4 mb-4">Student</p>
 
-		<form action="/StudentManagement/student/save" method="POST">
+        <c:url var = "saveUrl" value = "/student/save" />
+        
+		<form action="${saveUrl}" method="POST">
 
 			<!-- Add hidden form field to handle update -->
 			<input type="hidden" name="studentId" value="${student.id}" />
@@ -56,7 +58,7 @@
 			</div>
 			<div class="form-inline">
 
-				<input type="text" name="country" value="${Student.country}"
+				<input type="text" name="country" value="${student.country}"
 					class="form-control mb-4 col-4" placeholder="Country">
 
 			</div>
@@ -65,8 +67,10 @@
 
 		</form>
 
+        <c:url var="listUrl" value= "/students/list"/>
+        
 		<hr>
-		<a href="/StudentManagement/students/list">Back to Students List</a>
+		<a href="${listUrl}">Back to Students List</a>
 
 	</div>
 </body>

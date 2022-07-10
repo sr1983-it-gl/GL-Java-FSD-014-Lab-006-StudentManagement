@@ -23,9 +23,8 @@ public class StudentsController {
 	// add mapping for "/list"
 
 	@RequestMapping("/list")
-	public String listBooks(Model theModel) {
+	public String listStudents(Model theModel) {
 
-		// get Books from db
 		List<Student> theStudents = studentService.findAll();
 
 		// add to the spring model
